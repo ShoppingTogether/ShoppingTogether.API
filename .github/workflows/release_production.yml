@@ -53,7 +53,7 @@ jobs:
 
     - name: Build Console App
       working-directory: ./ShoppingTogether.Database/
-      run: dotnet publish --no-restore output DbUpShopping
+      run: dotnet publish --no-restore --output DbUpShopping
 
   dbup:
     name: Database Update
