@@ -55,15 +55,22 @@ jobs:
       working-directory: ./ShoppingTogether.Database/
       run: dotnet publish --no-restore --output DbUpShopping
 
+    - name: Upload artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: DbUpArtifact
+        path: ./ShoppingTogether.Database/
+
   dbup:
     name: Database Update
     runs-on: ubuntu-latest
     needs: build
-    defaults:
-      run:
-        working-directory: ./ShoppingTogether.Database/
     
     steps:
+    - uses: actions/download-artifact@v3
+      with:
+        name: DbUpArtifact
+
     - name: Run Migration
       env:
         SHOPPING_TOGETHER_CONNECTION_STRING: ${{ secrets.SHOPPING_TOGETHER_CONNECTION_STRING }}
