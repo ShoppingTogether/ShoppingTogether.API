@@ -55,7 +55,7 @@ jobs:
     needs: build
     defaults:
       run:
-        working-directory: ./ShoppingTogether.Database
+        working-directory: ShoppingTogether.Database
     
     steps:
     - name: Setup .NET Core
