@@ -32,7 +32,7 @@ jobs:
     - id: imagestring
       uses: ASzc/change-string-case-action@v5
       with:
-        string: shoppingtogether.azurecr.io/${{ steps.usernamestring.outputs.lowercase }}/shoppingtogetherapi:${{ steps.shastring.outputs.lowercase }}
+        string: shoppingtogether.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_8b96840b27d84956bd7e2d08d821c3f8 }}/shoppingtogetherapi:${{ github.sha }}
 
 
     - name: Build and push container image to registry
@@ -84,7 +84,7 @@ jobs:
     - id: imagestring
       uses: ASzc/change-string-case-action@v5
       with:
-        string: shoppingtogether.azurecr.io/${{ steps.usernamestring.outputs.lowercase }}/shoppingtogetherapi:${{ steps.shastring.outputs.lowercase }}
+        string: shoppingtogether.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_8b96840b27d84956bd7e2d08d821c3f8 }}/shoppingtogetherapi:${{ github.sha }}
 
     - name: Deploy to Azure Web App
       id: deploy-to-webapp
