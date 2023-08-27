@@ -1,9 +1,11 @@
 ﻿using DbUp;
+using DbUp.Postgresql;
 using System.Reflection;
 
 //Pull connection string from AWS Secrets Manager
 var connectionString = "";
 
+EnsureDatabase.For.PostgresqlDatabase(connectionString);
 var upgrader =
     DeployChanges.To
         .PostgresqlDatabase(connectionString)
