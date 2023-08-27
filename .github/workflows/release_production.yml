@@ -61,7 +61,7 @@ jobs:
       uses: actions/upload-artifact@v1
       with:
         name: runner-files
-        path: /
+        path: ShoppingTogether.API
 
     - name: Restore dependencies
       run: dotnet restore
