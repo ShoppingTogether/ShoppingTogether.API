@@ -71,7 +71,7 @@ jobs:
         SHOPPING_TOGETHER_CONNECTION_STRING: ${{ secrets.SHOPPING_TOGETHER_CONNECTION_STRING }}
       shell: pwsh
       run: |
-        $connectionString = $Env:LEASE_EXTRACT_DB_CONNECTION_STRING_DEV
+        $connectionString = $Env:SHOPPING_TOGETHER_CONNECTION_STRING
         $dllToRun = "DbUpShopping/ShoppingTogether.Database.dll"
         dotnet $dllToRun --ConnectionString="$connectionString"
 
