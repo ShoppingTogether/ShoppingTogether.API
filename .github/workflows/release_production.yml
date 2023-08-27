@@ -40,7 +40,7 @@ jobs:
       with:
         push: true
         tags: ${{ steps.imagestring.outputs.lowercase }}
-        file: ./Dockerfile
+        file: ./ShoppingTogether.API/Dockerfile
 
   dbup:
     name: Database Update
