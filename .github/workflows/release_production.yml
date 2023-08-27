@@ -24,7 +24,7 @@ jobs:
       uses: actions/upload-artifact@v1
       with:
         name: runner-files
-        path: ShoppingTogether.API\ShoppingTogether.Database
+        path: ./ShoppingTogether.Database/
 
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v2
