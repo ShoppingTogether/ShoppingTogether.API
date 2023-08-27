@@ -46,7 +46,7 @@ jobs:
   dbup:
     name: Database Update
     runs-on: ubuntu-latest
-    needs: build
+    # needs: build
     # defaults:
     #   run:
     #     working-directory: ./ShoppingTogether.Database/
