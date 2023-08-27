@@ -27,7 +27,7 @@ app.UseHttpsRedirection();
 
 app.MapGet("/secret", (IConfiguration config) =>
 {
-    return "Pipeline Secret obtained: " + config["Secrets:Sample"];
+    return "Secret obtained: " + config["Secrets:Sample"];
 
 });
 
