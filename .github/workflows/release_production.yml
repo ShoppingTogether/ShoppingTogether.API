@@ -96,5 +96,5 @@ jobs:
       with:
         app-name: 'shoppingtogetherapi'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_f08115f679454617a64d85a0c48254e0 }}
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile }}
         images: '${{ steps.imagestring.outputs.lowercase }}'
