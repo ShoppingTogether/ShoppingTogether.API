@@ -14,6 +14,7 @@ on:
 
 jobs:
   build:
+    name: Build
     runs-on: 'ubuntu-latest'
 
     steps:
@@ -54,21 +55,21 @@ jobs:
         dotnet-version: '7.0.x'
 
     - name: Restore dependencies
-      working-directory: ShoppingTogether.Database
+      working-directory: ./ShoppingTogether.Database
       run: dotnet restore
 
     - name: Build Console App
-      working-directory: ShoppingTogether.Database
+      working-directory: ./ShoppingTogether.Database
       run: dotnet publish --no-restore output DbUpShopping
 
     - name: Run Migration
-      working-directory: ShoppingTogether.Database
+      working-directory: ./ShoppingTogether.Database
       env:
         SHOPPING_TOGETHER_CONNECTION_STRING: ${{ secrets.SHOPPING_TOGETHER_CONNECTION_STRING }}
       shell: pwsh
       run: |
         $connectionString = $Env:LEASE_EXTRACT_DB_CONNECTION_STRING_DEV
-        $dllToRun = "ShoppingTogether.Database/DbUpShopping.dll"
+        $dllToRun = "./ShoppingTogether.Database/DbUpShopping.dll"
         dotnet $dllToRun --ConnectionString="$connectionString"
 
 
