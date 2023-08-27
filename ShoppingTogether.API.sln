@@ -5,7 +5,7 @@ VisualStudioVersion = 17.7.34018.315
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShoppingTogether.API", "ShoppingTogether.API\ShoppingTogether.API.csproj", "{04EA070A-870C-47A2-B5F0-4DE933FA72B1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShoppingTogher.Database", "ShoppingTogher.Database\ShoppingTogher.Database.csproj", "{E32478E1-6A33-4B1D-B281-FA89866138EF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShoppingTogether.Database", "ShoppingTogether.Database\ShoppingTogether.Database.csproj", "{E32478E1-6A33-4B1D-B281-FA89866138EF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
