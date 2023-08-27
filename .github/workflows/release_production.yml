@@ -24,7 +24,7 @@ jobs:
       uses: actions/upload-artifact@v1
       with:
         name: runner-files
-        path: /home/runner/work/ShoppingTogether.API
+        path: ../ShoppingTogether.Database
 
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v2
@@ -55,7 +55,7 @@ jobs:
     needs: build
     defaults:
       run:
-        working-directory: ShoppingTogether.Database
+        working-directory: ../ShoppingTogether.Database
     
     steps:
     - name: Setup .NET Core
