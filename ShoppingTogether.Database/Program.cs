@@ -17,7 +17,7 @@ connectionString = connectionString.Substring(connectionString.IndexOf("=") + 1)
 
 var shoppingApiPassword = args.FirstOrDefault(x => x.StartsWith("--ApiUserPassword", StringComparison.OrdinalIgnoreCase)) 
         ?? "";
-shoppingApiPassword = shoppingApiPassword.Substring(connectionString.IndexOf("=") + 1).Replace(@"""", string.Empty);
+shoppingApiPassword = shoppingApiPassword.Substring(shoppingApiPassword.IndexOf("=") + 1).Replace(@"""", string.Empty);
 
 
 //Create database if it does not exist

@@ -24,4 +24,4 @@ begin
 	exception when duplicate_object then raise notice '%, skipping', sqlerrm USING errcode = sqlstate;
 END
 $$;
-grant shop_sproc_runner to dev_shopping; 
+grant shop_sproc_runner to shopping_api; 
