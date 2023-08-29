@@ -1,4 +1,7 @@
 using Azure.Identity;
+using ShoppingTogether.API.Extensions;
+using ShoppingTogether.API.Users;
+using ShoppingTogether.API.Users.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -6,6 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.RegisterServices(builder.Configuration);
 
 if (builder.Environment.IsProduction())
 {
@@ -25,10 +29,19 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.MapGet("/secret", (IConfiguration config) =>
+app.MapGet("/users", async (IUserRepository userRepository) =>
 {
-    return "Secret obtained: " + config["Secrets:Sample"];
+    return await userRepository.GetAllUsersAsync();
+});
 
+app.MapGet("/users/{sid}", async (string sid, IUserRepository userRepository) =>
+{
+    return await userRepository.GetUserBySidAsync(sid);
+});
+
+app.MapPost("/users", async (User user, IUserRepository userRepository) =>
+{
+    return await userRepository.AddUserAsync(user.Name, user.Sid);
 });
 
 app.Run();
