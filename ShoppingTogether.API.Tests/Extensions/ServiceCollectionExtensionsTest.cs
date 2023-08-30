@@ -18,6 +18,19 @@ namespace ShoppingTogether.API.Tests.Extensions
         }
 
         [Fact]
+        public void RegisterServices_ReturnsServicesContainsDapperSnakeMatchinhg()
+        {
+            //Arrange
+            var services = new ServiceCollection();
+
+            //Act
+            services.RegisterServices(_configurationMock.Object);
+
+            //Assert
+            Assert.True(Dapper.DefaultTypeMap.MatchNamesWithUnderscores);
+        }
+
+        [Fact]
         public void RegisterServices_ReturnsServicesContainsPostgresDbConnection()
         {
             //Arrange
