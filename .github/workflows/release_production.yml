@@ -66,11 +66,13 @@ jobs:
     - name: Run Migration
       env:
         SHOPPING_TOGETHER_CONNECTION_STRING: ${{ secrets.SHOPPING_TOGETHER_CONNECTION_STRING }}
+        SHOPPING_TOGETHER_SHOPPING_API_PASSWORD: ${{ secrets.SHOPPING_TOGETHER_SHOPPING_API_PASSWORD }}
       shell: pwsh
       run: |
         $connectionString = $Env:SHOPPING_TOGETHER_CONNECTION_STRING
+        $apiSqlPassword =  $Env:SHOPPING_TOGETHER_SHOPPING_API_PASSWORD
         $dllToRun = "DbUpShopping/ShoppingTogether.Database.dll"
-        dotnet $dllToRun --ConnectionString="$connectionString"
+        dotnet $dllToRun --ConnectionString="$connectionString" --ApiUserPassword="$apiSqlPassword"
 
 
   deploy:
