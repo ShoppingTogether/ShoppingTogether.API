@@ -1,5 +1,4 @@
 ﻿using DbUp;
-using DbUp.Postgresql;
 using System.Reflection;
 
 //Pull connection string from secret store and pass in CI/CD
@@ -16,11 +15,19 @@ if (String.IsNullOrEmpty(connectionString))
 
 connectionString = connectionString.Substring(connectionString.IndexOf("=") + 1).Replace(@"""", string.Empty);
 
+var shoppingApiPassword = args.FirstOrDefault(x => x.StartsWith("--ApiUserPassword", StringComparison.OrdinalIgnoreCase)) 
+        ?? "";
+shoppingApiPassword = shoppingApiPassword.Substring(shoppingApiPassword.IndexOf("=") + 1).Replace(@"""", string.Empty);
+
+
+//Create database if it does not exist
 EnsureDatabase.For.PostgresqlDatabase(connectionString);
+
 var upgrader =
     DeployChanges.To
         .PostgresqlDatabase(connectionString)
         .WithScriptsEmbeddedInAssembly(Assembly.GetExecutingAssembly())
+        .WithVariable("api_pwd", shoppingApiPassword)
         .LogToConsole()
         .Build();
 
