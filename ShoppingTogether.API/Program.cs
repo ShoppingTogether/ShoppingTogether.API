@@ -9,7 +9,6 @@ var builder = WebApplication.CreateBuilder(args);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.RegisterServices(builder.Configuration);
 
 if (builder.Environment.IsProduction())
 {
@@ -17,6 +16,8 @@ if (builder.Environment.IsProduction())
     new Uri(builder.Configuration["KeyVault:Uri"]!),
     new DefaultAzureCredential());
 }
+
+builder.Services.RegisterServices(builder.Configuration);
 
 var app = builder.Build();
 
